@@ -1,0 +1,33 @@
+<div class="displayTable">
+  <div class="displayTableCell">
+
+    <div class="authBlock">
+        <div class="pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Sign up</h1>
+        </div>
+
+      <div style="width:320px">
+        <div class="form-group">
+          <input type="email" class="form-control" placeholder="Email Address" #userEmail required>
+        </div>
+
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Password" #userPwd required>
+        </div>
+
+        <div class="form-group">
+          <input type="button" class="btn btn-primary" value="Sign Up" (click)="authService.SignUp(userEmail.value, userPwd.value)">
+          <button type="button" style="float:right" class="btn btn-primary google-bg" (click)="authService.GoogleAuth()">
+              <fa-icon [icon]="faGooglePlusG"></fa-icon>
+            Continue with Google
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="redirectToLogin">
+      <span>Already have an account? <a class="redirect" routerLink="/sign-in">Log In</a></span>
+    </div>
+  </div>
+
+</div>

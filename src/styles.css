@@ -1,0 +1,30 @@
+.bha-blue {
+  background-color:#01AEFF;
+  color: white;
+}
+
+fa-icon {
+  margin-right:15px;
+  margin-left:15px;
+  font-size:1.3em;
+}
+
+body { 
+  font-family: 'Open Sans',Arial,sans-serif;
+}
+
+.google-bg {
+  background-color:#DD4B39;
+  border-color: #DD4B39;
+}
+.google-bg:hover {
+  background-color:rgb(219, 45, 22);
+  border-color: rgb(219, 45, 22);
+}
+.nopadR{
+  padding-right:0px !important;
+}
+* {
+  font-family: 'Open Sans',Arial,sans-serif;
+  user-select: none;
+}

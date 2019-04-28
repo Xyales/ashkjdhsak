@@ -1,0 +1,32 @@
+<div class="displayTable">
+    <div class="displayTableCell">
+      <div class="authBlock">
+
+        <div class="pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">User Profile</h1>
+        </div>
+          <!-- Show user data when logged in -->
+        <div class="row" *ngIf="authService.userData as user; else elseBlock">
+          <div class="col-md-12">
+            <div class="media">
+              <img class="align-self-start mr-5 rounded-circle" style="height:20vh" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" alt="{{user.displayName}}">
+              <div class="media-body"><!--^img-thumbnail^ add later-->
+                <h1>Hello: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
+                <p>User ID: <strong>{{user.uid}}</strong></p>
+                <p>Email: <strong>{{user.email}}</strong></p>
+                <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <ng-template #elseBlock> <!-- CHANGE ELSE TEMPLATE TO WORK PROPERLY-->
+          <div>It seems like you're not logged in!</div>
+          <div>Please <span class="slategrey redirect" routerLink="/sign-in">Login</span> into your account</div>
+        </ng-template>
+
+        <br><span class="slategrey redirect" (click)="goBack()">Go to previous page!</span> <!--routerLink="/sign-in"-->
+  
+    </div>
+  </div>
+</div>

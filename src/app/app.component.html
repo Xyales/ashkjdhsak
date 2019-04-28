@@ -1,0 +1,102 @@
+<div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar navigation -->
+      <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar noPad" style="z-index: 2">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="bha-blue nav-item" style="height:7vh;">
+              <span class="nav-link" style="line-height: 3em">
+                <fa-icon [icon]="faBars"></fa-icon>
+                <span class="nav-span">Berichtsheftapp</span>
+                <!-- <a class="navbar-brand bha-blue col-sm-3 col-md-2 mr-0" routerLink="/dashboard">
+                  <img class="brand-logo" src="../assets/firebase.png" alt="Firebase">
+                </a> -->
+              </span>
+            </li>
+            <li class="nav-item" *ngIf="!authService.userData as user; else elseSignInOut">
+              <span class="nav-link" routerLink="/sign-in">
+                <fa-icon [icon]="faUser"></fa-icon>
+                <span class="nav-span">Sign in</span>
+              </span>
+            </li>
+            <ng-template #elseSignInOut>
+              <li class="nav-item">
+                <span class="nav-link" (click)="authService.SignOut()">
+                  <fa-icon [icon]="faCoffee"></fa-icon>
+                  <span class="nav-span">Log out</span>
+                </span>
+              </li>
+            </ng-template>
+            
+            <li class="nav-item">
+              <span class="nav-link" routerLink="/azubi-berichte">
+                <fa-icon [icon]="faUser"></fa-icon>
+                <span class="nav-span">Berichte</span>
+              </span>
+            </li>
+            <li class="nav-item">
+              <span class="nav-link" routerLink="/azubi-export">
+                <fa-icon [icon]="faUser"></fa-icon>
+                <span class="nav-span">Export</span>
+              </span>
+            </li>
+            <li class="nav-item">
+              <span class="nav-link" routerLink="/azubi-profil">
+                <fa-icon [icon]="faUser"></fa-icon>
+                <span class="nav-span">Profil</span>
+              </span>
+            </li>
+            <li class="nav-item">
+              <span class="nav-link" routerLink="/azubi-einstellungen">
+                <fa-icon [icon]="faUser"></fa-icon>
+                <span class="nav-span">Einstellungen</span>
+              </span>
+            </li>
+
+            <li class="nav-item">
+              <span class="nav-link" routerLink="/ausbilder-berichte">
+                <fa-icon [icon]="faUser"></fa-icon>
+                <span class="nav-span">Berichte</span>
+              </span>
+            </li>
+            <li class="nav-item">
+              <span class="nav-link" routerLink="/ausbilder-azubis">
+                <fa-icon [icon]="faUser"></fa-icon>
+                <span class="nav-span">Export</span>
+              </span>
+            </li>
+            <li class="nav-item">
+              <span class="nav-link" routerLink="/ausbilder-profil">
+                <fa-icon [icon]="faUser"></fa-icon>
+                <span class="nav-span">Profil</span>
+              </span>
+            </li>
+            <li class="nav-item">
+              <span class="nav-link" routerLink="/ausbilder-einstellungen">
+                <fa-icon [icon]="faUser"></fa-icon>
+                <span class="nav-span">Einstellungen</span>
+              </span>
+            </li>
+  
+          </ul>
+        </div>
+      </nav>
+  
+      <!-- Main content -->
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 noPad">
+  
+        <!-- Top navigation -->
+        <nav class="navbar bha-blue flex-md-nowrap shadow">
+            <div class="navbar-sticky">
+              
+            </div>
+        </nav>
+
+        <!-- Content -->
+        <div class="inner-adjust col-12">
+          <router-outlet></router-outlet>
+        </div>
+      </main>
+  
+    </div>
+  </div>

@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Users List</h1>
+    <!-- It won't show if there is no user data -->
+    <a routerLink="/create-user" class="btn btn-success" *ngIf="hideWhenNoUser">
+      <i class="fas fa-plus custom-fa-plus"></i>
+      Add User
+    </a>
+  </div>
+  
+  <div class="pricing-header mx-auto">
+  
+    <!-- Preloader shows before the data loads-->
+    <div class="no-data text-center" *ngIf="preLoader">
+      <div class="loader">
+        <div class="hex"></div>
+        <div class="para para1"></div>
+        <div class="para para2"></div>
+        <div class="para para3"></div>
+      </div>
+    </div>
+  
+    <!-- No data shows when their is no user data available -->
+    <div class="no-data text-center" *ngIf="noData">
+      <p class="nodata-msg">No user added yet!</p>
+      <a routerLink="/create-user" class="btn btn-success">
+        <i class="fas fa-plus custom-fa-plus"></i>
+        Add User
+      </a>
+    </div>
+  
+    <!-- Showing users data -->
+    <div class="table-responsive" *ngIf="hideWhenNoUser">
+      <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
+        <thead>
+          <tr>
+            <th scope="col">User ID</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile number</th>
+            <th class="text-center" scope="col">Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- *ngFor loop iterates over User array and fetch the user's data -->
+          <!-- paginate pipe will add pagination in user's list, it won't show if items are less then 7 -->
+          <tr *ngFor="let user of User | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+            <th scope="row">{{user.$key}}</th>
+            <td>{{user.firstName}} {{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.mobileNumber}}</td>
+            <td class="text-center action-block">
+              <!-- routerLink="/edit-user/{{user.$key}}" is refered to { path: 'edit-user/:id', component: EditUserComponent } in app-routing.moudles.ts -->
+              <i class="far fa-edit" style="margin-right:15px" routerLink="/edit-user/{{user.$key}}">
+                <img src="assets/user.jpg" alt="Edit" height="42" width="42"/>
+              </i>
+              <i class="far fa-trash-alt" (click)="deleteUser(user)">
+                <img src="assets/user.jpg" alt="Delete" height="42" width="42"/>
+              </i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Pagination -->
+    <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
+  </div>
